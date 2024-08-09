@@ -34,6 +34,7 @@ public class RNNordicDfuModule extends ReactContextBaseJavaModule implements Lif
     public void startDFU(String address, String name, String filePath, int packetReceiptNotificationParameter, ReadableMap options, Promise promise) {
         mPromise = promise;
         final DfuServiceInitiator starter = new DfuServiceInitiator(address)
+                .setForeground(false)
                 .setKeepBond(false);
                 
         if (options.hasKey("retries")) {
